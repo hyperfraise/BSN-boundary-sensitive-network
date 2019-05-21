@@ -36,7 +36,7 @@ def PEM_loss(anchors_iou,match_iou,config):
 
     iou_weights=u_hmask+u_smmask+u_slmask
     iou_loss=abs_smooth(match_iou-anchors_iou)
-    print match_iou.get_shape(),anchors_iou.get_shape()
+    print(match_iou.get_shape(),anchors_iou.get_shape())
     iou_loss=tf.losses.compute_weighted_loss(iou_loss,iou_weights)
 
     num_iou=[tf.reduce_sum(u_hmask),tf.reduce_sum(u_smmask),tf.reduce_sum(u_slmask)]
@@ -141,8 +141,8 @@ if __name__ == "__main__":
         val_info["iou_loss"].append(np.mean(mini_info["iou_loss"]))
         val_info["l2"].append(np.mean(mini_info["l2"]))
 
-        print "Epoch-%d Train Loss:  %.04f" %(epoch,train_info["iou_loss"][-1])
-        print "Epoch-%d Val   Loss:  %.04f" %(epoch,val_info["iou_loss"][-1])
+        print("Epoch-%d Train Loss:  %.04f" %(epoch,train_info["iou_loss"][-1]))
+        print("Epoch-%d Val   Loss:  %.04f" %(epoch,val_info["iou_loss"][-1]))
 
         model_saver.save(sess,"models/PEM/pem_model_checkpoint")
         if val_info["iou_loss"][-1]<best_val_cost:

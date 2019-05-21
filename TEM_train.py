@@ -91,7 +91,7 @@ if __name__ == "__main__":
 
     train_info={"cost":[],"loss_action":[],"loss_start":[],"loss_end":[],"l2":[]}
     val_info={"cost":[],"loss_action":[],"loss_start":[],"loss_end":[],"l2":[]}
-    info_keys=train_info.keys()
+    info_keys=list(train_info.keys())
     best_val_cost = 1000000
     
     for epoch in range(0,config.training_epochs):
@@ -126,8 +126,8 @@ if __name__ == "__main__":
         for key in info_keys:
             val_info[key].append(np.mean(mini_info[key]))
 
-        print "Epoch-%d Train Loss: Action - %.02f, Start - %.02f, End - %.02f" %(epoch,train_info["loss_action"][-1],train_info["loss_start"][-1],train_info["loss_end"][-1])
-        print "Epoch-%d Val   Loss: Action - %.02f, Start - %.02f, End - %.02f" %(epoch,val_info["loss_action"][-1],val_info["loss_start"][-1],val_info["loss_end"][-1])
+        print("Epoch-%d Train Loss: Action - %.02f, Start - %.02f, End - %.02f" %(epoch,train_info["loss_action"][-1],train_info["loss_start"][-1],train_info["loss_end"][-1]))
+        print("Epoch-%d Val   Loss: Action - %.02f, Start - %.02f, End - %.02f" %(epoch,val_info["loss_action"][-1],val_info["loss_start"][-1],val_info["loss_end"][-1]))
         
         """ save model """ 
         model_saver.save(sess,"models/TEM/tem_model_checkpoint")

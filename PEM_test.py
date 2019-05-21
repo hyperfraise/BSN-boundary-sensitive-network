@@ -57,7 +57,7 @@ if __name__ == "__main__":
     FullDict=PEM_load_data.getTestData("validation")
 
     batch_video_list=PEM_load_data.getBatchList(val_dict,config.batch_size)
-    video_list=val_dict.keys()
+    video_list=list(val_dict.keys())
     for idx in range(len(video_list)):
         video_name=video_list[idx]
         prop_dict=FullDict[video_name]

@@ -126,7 +126,7 @@ parser.add_argument('end_idx', type=int)
 args = parser.parse_args()
 video_dict= load_json("./data/activitynet_annotations/anet_anno_action.json")
 result_dict={}
-video_list=video_dict.keys()[args.start_idx:args.end_idx]
+video_list=list(video_dict.keys())[args.start_idx:args.end_idx]
 
 for video_name in video_list:
     generateProposals(video_name,video_dict)

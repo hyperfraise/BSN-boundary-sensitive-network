@@ -35,7 +35,7 @@ def getDatasetDict():
 
 def getBatchList(video_dict,batch_size,shuffle=True):
     ## notice that there are some video appear twice in last two batch ##
-    video_list=video_dict.keys()
+    video_list=list(video_dict.keys())
     batch_start_list=[i*batch_size for i in range(len(video_list)/batch_size)]
     batch_start_list.append(len(video_list)-batch_size)
     if shuffle==True:
@@ -46,7 +46,7 @@ def getBatchList(video_dict,batch_size,shuffle=True):
     return batch_video_list
     
 def prop_dict_data(prop_dict):
-    prop_name_list=prop_dict.keys()
+    prop_name_list=list(prop_dict.keys())
     batch_feature=[]
     batch_iou_list=[]
     batch_ioa_list=[]
@@ -88,13 +88,13 @@ def getTestData(dataSet):
         video_dict=test_dict
     else:
         video_dict=val_dict
-    video_list=video_dict.keys()#[:500]
+    video_list=list(video_dict.keys())#[:500]
     
     FullData={}
     i=0
     for video_name in video_list:
         if i%100 == 0:
-            print "%d / %d videos in %s set is loaded" %(i,len(video_list),dataSet) 
+            print("%d / %d videos in %s set is loaded" %(i,len(video_list),dataSet)) 
         i+=1
         prop_dict,video_name = getProposalDataTest(video_dict,video_name)
         FullData[video_name]=prop_dict
@@ -112,7 +112,7 @@ def getTrainData(batch_size,dataSet):
     i=0
     for video_list in batch_video_list:
         if i%10 == 0:
-            print "%d / %d batch_data in %s set is loaded" %(i,len(batch_video_list),dataSet) 
+            print("%d / %d batch_data in %s set is loaded" %(i,len(batch_video_list),dataSet)) 
         i+=1
         FullData.append(getProposalData(video_dict,video_list))
     return FullData

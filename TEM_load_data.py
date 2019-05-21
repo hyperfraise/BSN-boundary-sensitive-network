@@ -50,7 +50,7 @@ def ioa_with_anchors(anchors_min,anchors_max,box_min,box_max):
 def getBatchList(numVideo,batch_size,shuffle=True):
     """Generate batch list for each epoch randomly
     """
-    video_list=range(numVideo)
+    video_list=list(range(numVideo))
     batch_start_list=[i*batch_size for i in range(len(video_list)/batch_size)]
     batch_start_list.append(len(video_list)-batch_size)
     if shuffle==True:
@@ -63,7 +63,7 @@ def getBatchList(numVideo,batch_size,shuffle=True):
 def getBatchListTest(video_dict,batch_size,shuffle=True):
     """Generate batch list during testing
     """
-    video_list=video_dict.keys()
+    video_list=list(video_dict.keys())
     batch_start_list=[i*batch_size for i in range(len(video_list)/batch_size)]
     batch_start_list.append(len(video_list)-batch_size)
     if shuffle==True:
@@ -102,7 +102,7 @@ def getFullData(dataSet):
         video_dict=train_dict
     else:
         video_dict=val_dict
-    video_list=video_dict.keys()
+    video_list=list(video_dict.keys())
         
     batch_bbox=[]
     batch_index=[0]
@@ -111,7 +111,7 @@ def getFullData(dataSet):
     batch_anchor_feature=[]
     for i in range(len(video_list)):
         if i%100==0:
-            print "%d / %d %s videos are loaded" %(i,len(video_list),dataSet)
+            print("%d / %d %s videos are loaded" %(i,len(video_list),dataSet))
         video_name=video_list[i]
         video_info=video_dict[video_name]
         video_frame=video_info['duration_frame']

@@ -109,7 +109,7 @@ def min_max(x):
     return x
 
 train_dict,val_dict,test_dict=getDatasetDict()
-video_list=val_dict.keys()
+video_list=list(val_dict.keys())
 result_dict={}
 for i in range(len(video_list)):
     video_name=video_list[i]
@@ -123,7 +123,7 @@ for i in range(len(video_list)):
     df=df.sort_values(by="score",ascending=False)
     video_info=val_dict[video_name]
     video_duration=float(video_info["duration_frame"]/16*16)/video_info["duration_frame"]*video_info["duration_second"]
-    print video_duration, video_info["duration_second"]
+    print(video_duration, video_info["duration_second"])
     proposal_list=[]
 
     for j in range(min(100,len(df))):

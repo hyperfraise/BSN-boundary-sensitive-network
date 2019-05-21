@@ -71,7 +71,7 @@ uniform_average_nr_proposals_valid, uniform_average_recall_valid, uniform_recall
 plot_metric(uniform_average_nr_proposals_valid, uniform_average_recall_valid, uniform_recall_valid)
 
 #mean_100=np.mean(uniform_recall_valid[:,-1])
-print "AR@1 is \t",np.mean(uniform_recall_valid[:,0])
-print "AR@5 is \t",np.mean(uniform_recall_valid[:,4])
-print "AR@10 is \t",np.mean(uniform_recall_valid[:,9])
-print "AR@100 is \t",np.mean(uniform_recall_valid[:,-1])
+print("AR@1 is \t",np.mean(uniform_recall_valid[:,0]))
+print("AR@5 is \t",np.mean(uniform_recall_valid[:,4]))
+print("AR@10 is \t",np.mean(uniform_recall_valid[:,9]))
+print("AR@100 is \t",np.mean(uniform_recall_valid[:,-1]))
